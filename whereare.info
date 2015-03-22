@@ -29,6 +29,7 @@ dependencies[] = options
 dependencies[] = path
 dependencies[] = pathauto
 dependencies[] = proj4js
+dependencies[] = token
 dependencies[] = update
 dependencies[] = views
 dependencies[] = views_ui
