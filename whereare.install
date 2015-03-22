@@ -1,0 +1,58 @@
+<?php
+/**
+ * Implement hook_install().
+ */
+function whereare_install() {
+  // Site level config:
+  variable_set('site_frontpage', 'notes');
+  
+  // Set default theme to Bootstrap:
+  $theme = 'bootstrap';
+  theme_enable(array('bootstrap'));
+  variable_set('theme_default', $theme);
+  
+  // Configure theme:
+  $theme_variable = 'theme_settings';
+  $theme_settings = variable_get($theme_variable, array());
+  
+  $theme_settings['toggle_logo'] = 0;
+  $theme_settings['toggle_favicon'] = 0;
+  
+  variable_set($theme_variable, $theme_settings);
+
+  // Configure Google Adsense
+  variable_set('adsense_basic_id', 'pub-2835981570956339');
+  variable_set('adsense_id_module', 'adsense_basic');
+  variable_set('adsense_managed_ad_block_0', 'Adsense+Responsive:responsive:2560638657:center:auto');
+  variable_set('adsense_managed_async', 1);
+  variable_set('adsense_managed_number_blocks', '1');
+  
+  // Configure Google Analytics
+  // UA-60564319-1
+  
+  // Create "Note" content type:
+  $type = array(
+    'type' => 'note',
+    'name' => st('Note'),
+    'base' => 'node_content',
+  );
+  
+  $type = node_type_set_defaults($type);
+  node_type_save($type);
+  node_add_body_field($type);
+  
+  // Create "Plan" content type:
+  $type = array(
+    'type' => 'plan',
+    'name' => st('Plan'),
+    'base' => 'node_content',
+  );
+  
+  $type = node_type_set_defaults($type);
+  node_type_save($type);
+  node_add_body_field($type);
+  
+  // Configure Permissions:
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', 'access comments'));
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content', 'access comments'));
+}
