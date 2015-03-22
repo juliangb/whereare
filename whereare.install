@@ -54,6 +54,24 @@ function whereare_install() {
   
   // Create "Plan" content:
   whereare_createnode('Plan', 'London, United Kingdom (Depart home)', date_create('2015-04-09'));
+  whereare_createnode('Plan', 'Istanbul, Turkey',                     date_create('2015-04-19'));
+  whereare_createnode('Plan', 'Georgia',                              date_create('2015-04-24'));
+  whereare_createnode('Plan', 'Azerbaijan',                           date_create('2015-05-02'));
+  whereare_createnode('Plan', 'Uzbekistan',                           date_create('2015-05-20'));
+  whereare_createnode('Plan', 'Taijikistan',                          date_create('2015-05-27'));
+  whereare_createnode('Plan', 'Pakistan',                             date_create('2015-06-30'));
+  whereare_createnode('Plan', 'India',                                date_create('2015-07-13'));
+  whereare_createnode('Plan', 'Nepal',                                date_create('2015-08-13'));
+  whereare_createnode('Plan', 'China',                                date_create('2015-11-01'));
+  whereare_createnode('Plan', 'Taiwan',                               date_create('2015-12-01'));
+  whereare_createnode('Plan', 'Australia',                            date_create('2015-12-20'));
+  whereare_createnode('Plan', 'New Zealand',                          date_create('2016-01-19'));
+  whereare_createnode('Plan', 'Pacific Ocean',                        date_create('2016-03-01'));
+  whereare_createnode('Plan', 'South America',                        date_create('2016-04-01'));
+  whereare_createnode('Plan', 'Central America',                      date_create('2016-06-01'));
+  whereare_createnode('Plan', 'Mexico',                               date_create('2016-08-01'));
+  whereare_createnode('Plan', 'USA',                                  date_create('2016-09-01'));
+  whereare_createnode('Plan', 'London, United Kingdom (Arrive home)', date_create('2016-10-09'));
   
   // Configure Permissions:
   user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', 'access comments'));
