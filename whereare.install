@@ -52,6 +52,9 @@ function whereare_install() {
   node_type_save($type);
   node_add_body_field($type);
   
+  // Create "Plan" content:
+  whereare_createnode('Plan', 'London, United Kingdom (Depart home)', date_create('2015-04-09'));
+  
   // Configure Permissions:
   user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', 'access comments'));
   user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content', 'access comments'));
