@@ -22,6 +22,7 @@ projects[] = "comment_notify"
 projects[ctools] = 1.7
 projects[date] = 2.8
 projects[date_popup_authored] = 1.2
+projects[entity] = 1.6
 projects[devel] = 1.5
 projects[geocoder] = 1.2
 projects[geophp] = 1.7
