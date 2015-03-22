@@ -10,7 +10,6 @@ dependencies[] = block
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_api
-dependencies[] = entity
 dependencies[] = field_ui
 dependencies[] = file
 dependencies[] = geofield
