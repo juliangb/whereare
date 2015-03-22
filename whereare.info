@@ -1,0 +1,36 @@
+name = Where Are
+description = Drupal Installation Profile for http://wherearejuliananddebbie.co.uk
+core = 7.x
+
+; Drupal (Core)
+dependencies[] = admin_menu
+dependencies[] = adsense
+dependencies[] = adsense_managed
+dependencies[] = block
+dependencies[] = ctools
+dependencies[] = date
+dependencies[] = date_api
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = geofield
+dependencies[] = geophp
+dependencies[] = globalredirect
+dependencies[] = googleanalytics
+dependencies[] = image
+dependencies[] = jquery_update
+dependencies[] = libraries
+dependencies[] = menu
+dependencies[] = module_filter
+dependencies[] = openlayers
+dependencies[] = openlayers_ui
+dependencies[] = openlayers_views
+dependencies[] = options
+dependencies[] = path
+dependencies[] = pathauto
+dependencies[] = proj4js
+dependencies[] = update
+dependencies[] = views
+dependencies[] = views_ui
+dependencies[] = xmlsitemap
+dependencies[] = xmlsitemap_engines
+dependencies[] = xmlsitemap_node
