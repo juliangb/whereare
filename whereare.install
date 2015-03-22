@@ -4,6 +4,7 @@
  */
 function whereare_install() {
   // Site level config:
+  variable_set('site_name', 'Where are Julian & Debbie');
   variable_set('site_frontpage', 'notes');
   
   // Set default theme to Bootstrap:
