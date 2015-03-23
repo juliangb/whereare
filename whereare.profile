@@ -8,6 +8,26 @@ function whereare_views_api() {
 }
 
 /**
+ * Implements hook_block_info_alter().
+ */
+function whereare_block_info_alter(&$blocks, $theme, $code_blocks) {
+  if (isset($blocks['system']['help'])) {
+    $blocks['system']['help']['status'] = 0;
+    $blocks['system']['help']['region'] = BLOCK_REGION_NONE;
+    $blocks['system']['help']['weight'] = 1;
+    $blocks['system']['help']['visibility'] = BLOCK_VISIBILITY_LISTED;
+    //$blocks['system']['help']['pages'] = '<front>';
+  }
+  if (isset($blocks['views']['plans-block_1'])) {
+    $blocks['views']['plans-block_1']['status'] = 1;
+    $blocks['views']['plans-block_1']['region'] = 'Help';
+    $blocks['views']['plans-block_1']['weight'] = 1;
+    $blocks['views']['plans-block_1']['visibility'] = BLOCK_VISIBILITY_LISTED;
+    //$blocks['views']['plans-block_1']['pages'] = '<front>';
+  }
+}
+
+/**
  * Function to allow nodes to be created on installation.
  */
 function whereare_createnode($type, $title, $date) {
