@@ -5,7 +5,7 @@
  */
 function whereare_init() {
   // Performed in hook_init to avoid Aegir automatically setting the site name on installation.
-  variable_set('site_name', 'Where are Julian & Debbie');
+  variable_set('site_name', 'Where are Julian & Debbie?');
 }
 
 /**
