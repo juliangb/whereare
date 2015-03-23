@@ -276,8 +276,8 @@ function whereare_install() {
     ),
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'type' => 'geofield_wkt',
+        'label' => 'hidden',
+        'type' => 'geofield_openlayers',
         'settings' => array(
           'data' => 'full',
         ),
@@ -286,7 +286,7 @@ function whereare_install() {
       ),
       'teaser' => array(
         'type' => 'hidden',
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'weight' => 0,
       ),
@@ -345,8 +345,8 @@ function whereare_install() {
     ),
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'type' => 'geofield_wkt',
+        'label' => 'hidden',
+        'type' => 'geofield_openlayers',
         'settings' => array(
           'data' => 'full',
         ),
@@ -355,7 +355,7 @@ function whereare_install() {
       ),
       'teaser' => array(
         'type' => 'hidden',
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'weight' => 0,
       ),
