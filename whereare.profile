@@ -19,6 +19,13 @@ function whereare_block_info_alter(&$blocks, $theme, $code_blocks) {
     $blocks['system']['help']['visibility'] = BLOCK_VISIBILITY_LISTED;
     //$blocks['system']['help']['pages'] = '<front>';
   }
+  if (isset($blocks['views']['notes-block_1'])) {
+    $blocks['views']['notes-block_1']['status'] = 1;
+    $blocks['views']['notes-block_1']['region'] = 'help';
+    $blocks['views']['notes-block_1']['weight'] = 1;
+    $blocks['views']['notes-block_1']['visibility'] = BLOCK_VISIBILITY_LISTED;
+    $blocks['views']['notes-block_1']['pages'] = 'notes';
+  }
   if (isset($blocks['views']['plans-block_1'])) {
     $blocks['views']['plans-block_1']['status'] = 1;
     $blocks['views']['plans-block_1']['region'] = 'help';
