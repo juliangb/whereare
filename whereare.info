@@ -1,6 +1,7 @@
 name = Where Are
 description = Drupal Installation Profile for http://wherearejuliananddebbie.co.uk
 core = 7.x
+exclusive = true
 
 ; Drupal (Core)
 dependencies[] = admin_menu
