@@ -30,6 +30,25 @@ function whereare_install() {
   // Configure Google Analytics
   // UA-60564319-1
   
+  // Create date field:
+  field_create_field(array(
+    'type' => 'datetime',
+    'field_name' => 'field_date',
+    'settings' => array(
+      'granularity' => array(
+        'year' => 'year',
+        'month' => 'month',
+        'day' => 'day',
+        'hour' => 'hour',
+        'minute' => 'minute',
+        'second' => 0,
+      ),
+      'tz_handling' => 'none',
+      'timezone_db' => '',
+      'todate' => 'optional',
+    ),
+    'cardinality' => '1',
+  ));
   // Create "Note" content type:
   $type = array(
     'type' => 'note',
