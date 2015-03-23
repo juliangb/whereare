@@ -78,6 +78,47 @@ function whereare_install() {
   node_type_save($type);
   node_add_body_field($type);
   
+
+
+  // Many of the following values will be defaulted, they're included here as an illustrative examples.
+  // See http://api.drupal.org/api/function/field_create_instance/7
+  field_create_instance(array(
+    'field_name' => 'field_image',
+    'entity_type' => 'node',
+    'label' => 'Image',
+    'bundle' => 'note',
+    'required' => FALSE,
+    'settings' => array(
+      'file_directory' => 'field/image',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'alt_field' => TRUE,
+      'title_field' => '',
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'type' => 'image',
+        'settings' => array(
+          'image_style' => 'large',
+          'image_link' => '',
+        ),
+        'weight' => -1,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'type' => 'image',
+        'settings' => array(
+          'image_style' => 'medium',
+          'image_link' => 'content',
+        ),
+        'weight' => -1,
+      ),
+    ),
+  ));
+  
   // Create "Plan" content type:
   $type = array(
     'type' => 'plan',
