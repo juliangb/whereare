@@ -40,6 +40,8 @@ function whereare_install() {
 
   // Don't display author information on teasers:
   variable_set('node_submitted_note', 0);
+  // Set path pattern:
+  variable_set('pathauto_node_note_pattern', 'note/[node:title]');
   
   $type = node_type_set_defaults($type);
   node_type_save($type);
@@ -54,6 +56,8 @@ function whereare_install() {
   
   // Don't display author information on teasers:
   variable_set('node_submitted_plan', 0);
+  // Set path pattern:
+  variable_set('pathauto_node_plan_pattern', 'plan/[node:title]');
   
   $type = node_type_set_defaults($type);
   node_type_save($type);
