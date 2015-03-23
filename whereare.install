@@ -364,7 +364,7 @@ function whereare_install() {
     'description' => '',
     'field_name' => 'field_location',
     'entity_type' => 'node',
-    'bundle' => 'note',
+    'bundle' => 'plan',
     'deleted' => '0',
   ));
   
