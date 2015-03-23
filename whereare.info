@@ -13,6 +13,7 @@ dependencies[] = date_api
 dependencies[] = dblog
 dependencies[] = field_ui
 dependencies[] = file
+dependencies[] = geocoder
 dependencies[] = geofield
 dependencies[] = geophp
 dependencies[] = globalredirect
