@@ -20,7 +20,7 @@ function whereare_block_info_alter(&$blocks, $theme, $code_blocks) {
   }
   if (isset($blocks['views']['plans-block_1'])) {
     $blocks['views']['plans-block_1']['status'] = 1;
-    $blocks['views']['plans-block_1']['region'] = 'Help';
+    $blocks['views']['plans-block_1']['region'] = 'help';
     $blocks['views']['plans-block_1']['weight'] = 1;
     $blocks['views']['plans-block_1']['visibility'] = BLOCK_VISIBILITY_LISTED;
     //$blocks['views']['plans-block_1']['pages'] = '<front>';
