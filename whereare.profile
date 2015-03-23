@@ -1,10 +1,11 @@
 <?php
 
 /**
- * Implements hook_views_api().
+ * Implements hook_init().
  */
-function whereare_views_api() {
-  return array('api' => 3.0);
+function whereare_init() {
+  // Performed in hook_init to avoid Aegir automatically setting the site name on installation.
+  variable_set('site_name', 'Where are Julian & Debbie');
 }
 
 /**
@@ -25,6 +26,13 @@ function whereare_block_info_alter(&$blocks, $theme, $code_blocks) {
     $blocks['views']['plans-block_1']['visibility'] = BLOCK_VISIBILITY_LISTED;
     $blocks['views']['plans-block_1']['pages'] = 'plans';
   }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function whereare_views_api() {
+  return array('api' => 3.0);
 }
 
 /**
