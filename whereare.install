@@ -29,27 +29,7 @@ function whereare_install() {
   
   // Configure Google Analytics
   // UA-60564319-1
-  
-  // Create date field:
-  field_create_field(array(
-    'type' => 'datetime',
-    'field_name' => 'field_date',
-    'settings' => array(
-      'granularity' => array(
-        'year' => 'year',
-        'month' => 'month',
-        'day' => 'day',
-        'hour' => 'hour',
-        'minute' => 'minute',
-        'second' => 0,
-      ),
-      'tz_handling' => 'none',
-      'timezone_db' => '',
-      'todate' => 'optional',
-    ),
-    'cardinality' => '1',
-  ));
-  
+    
   // Create image field:
   field_create_field(array(
     'field_name' => 'field_image',
@@ -61,6 +41,153 @@ function whereare_install() {
       'uri_scheme' => 'public',
     ),
   ));
+  
+  // Create geofield:
+  field_create_field(array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(
+      'backend' => 'default',
+      'srid' => '4326',
+    ),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_location' => array(
+              'geom' => 'field_location_geom',
+              'geo_type' => 'field_location_geo_type',
+              'lat' => 'field_location_lat',
+              'lon' => 'field_location_lon',
+              'left' => 'field_location_left',
+              'top' => 'field_location_top',
+              'right' => 'field_location_right',
+              'bottom' => 'field_location_bottom',
+              'geohash' => 'field_location_geohash',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_location' => array(
+              'geom' => 'field_location_geom',
+              'geo_type' => 'field_location_geo_type',
+              'lat' => 'field_location_lat',
+              'lon' => 'field_location_lon',
+              'left' => 'field_location_left',
+              'top' => 'field_location_top',
+              'right' => 'field_location_right',
+              'bottom' => 'field_location_bottom',
+              'geohash' => 'field_location_geohash',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(
+      'lat' => array(
+        'lat',
+      ),
+      'lon' => array(
+        'lon',
+      ),
+      'top' => array(
+        'top',
+      ),
+      'bottom' => array(
+        'bottom',
+      ),
+      'left' => array(
+        'left',
+      ),
+      'right' => array(
+        'right',
+      ),
+      'geohash' => array(
+        'geohash',
+      ),
+      'centroid' => array(
+        'lat',
+        'lon',
+      ),
+      'bbox' => array(
+        'top',
+        'bottom',
+        'left',
+        'right',
+      ),
+    ),
+    'field_name' => 'field_location',
+    'type' => 'geofield',
+    'module' => 'geofield',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'geom' => array(
+        'type' => 'blob',
+        'size' => 'big',
+        'not null' => FALSE,
+      ),
+      'geo_type' => array(
+        'type' => 'varchar',
+        'default' => '',
+        'length' => 64,
+      ),
+      'lat' => array(
+        'type' => 'numeric',
+        'precision' => 18,
+        'scale' => 12,
+        'not null' => FALSE,
+      ),
+      'lon' => array(
+        'type' => 'numeric',
+        'precision' => 18,
+        'scale' => 12,
+        'not null' => FALSE,
+      ),
+      'left' => array(
+        'type' => 'numeric',
+        'precision' => 18,
+        'scale' => 12,
+        'not null' => FALSE,
+      ),
+      'top' => array(
+        'type' => 'numeric',
+        'precision' => 18,
+        'scale' => 12,
+        'not null' => FALSE,
+      ),
+      'right' => array(
+        'type' => 'numeric',
+        'precision' => 18,
+        'scale' => 12,
+        'not null' => FALSE,
+      ),
+      'bottom' => array(
+        'type' => 'numeric',
+        'precision' => 18,
+        'scale' => 12,
+        'not null' => FALSE,
+      ),
+      'geohash' => array(
+        'type' => 'varchar',
+        'length' => 16,
+        'not null' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'node' => array(
+        'note',
+      ),
+    ),
+  ));
+
+
   
   // Create "Note" content type:
   $type = array(
@@ -119,6 +246,59 @@ function whereare_install() {
     ),
   ));
   
+  field_create_instance(array(
+    'label' => 'Location',
+    'widget' => array(
+      'weight' => '33',
+      'type' => 'geocoder',
+      'module' => 'geocoder',
+      'active' => 1,
+      'settings' => array(
+        'geocoder_field' => 'title',
+        'geocoder_handler' => 'google',
+        'handler_settings' => array(
+          'google' => array(
+            'geometry_type' => 'point',
+            'all_results' => 0,
+            'reject_results' => array(
+              'APPROXIMATE' => 0,
+              'GEOMETRIC_CENTER' => 0,
+              'RANGE_INTERPOLATED' => 0,
+              'ROOFTOP' => 0,
+            ),
+          ),
+        ),
+        'delta_handling' => 'default',
+      ),
+    ),
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'type' => 'geofield_wkt',
+        'settings' => array(
+          'data' => 'full',
+        ),
+        'module' => 'geofield',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'field_name' => 'field_location',
+    'entity_type' => 'node',
+    'bundle' => 'note',
+    'deleted' => '0',
+  ));
+  
   // Create "Plan" content type:
   $type = array(
     'type' => 'plan',
@@ -134,6 +314,59 @@ function whereare_install() {
   $type = node_type_set_defaults($type);
   node_type_save($type);
   node_add_body_field($type);
+  
+  field_create_instance(array(
+    'label' => 'Location',
+    'widget' => array(
+      'weight' => '33',
+      'type' => 'geocoder',
+      'module' => 'geocoder',
+      'active' => 1,
+      'settings' => array(
+        'geocoder_field' => 'title',
+        'geocoder_handler' => 'google',
+        'handler_settings' => array(
+          'google' => array(
+            'geometry_type' => 'point',
+            'all_results' => 0,
+            'reject_results' => array(
+              'APPROXIMATE' => 0,
+              'GEOMETRIC_CENTER' => 0,
+              'RANGE_INTERPOLATED' => 0,
+              'ROOFTOP' => 0,
+            ),
+          ),
+        ),
+        'delta_handling' => 'default',
+      ),
+    ),
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'type' => 'geofield_wkt',
+        'settings' => array(
+          'data' => 'full',
+        ),
+        'module' => 'geofield',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'field_name' => 'field_location',
+    'entity_type' => 'node',
+    'bundle' => 'note',
+    'deleted' => '0',
+  ));
   
   // Create "Plan" content:
   whereare_createnode('Plan', 'London, United Kingdom (Depart home)', date_create('2015-04-09'));
