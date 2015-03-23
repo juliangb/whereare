@@ -49,6 +49,19 @@ function whereare_install() {
     ),
     'cardinality' => '1',
   ));
+  
+  // Create image field:
+  field_create_field(array(
+    'field_name' => 'field_image',
+    'type' => 'image',
+    'cardinality' => 0,
+    'locked' => FALSE,
+    'indexes' => array('fid' => array('fid')),
+    'settings' => array(
+      'uri_scheme' => 'public',
+    ),
+  ));
+  
   // Create "Note" content type:
   $type = array(
     'type' => 'note',
