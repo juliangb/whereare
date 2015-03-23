@@ -29,7 +29,86 @@ function whereare_install() {
   
   // Configure Google Analytics
   // UA-60564319-1
-    
+  
+  // Create date field:
+  field_create_field(array(
+    'translatable' => '0',
+    'entity_types' => array(),
+    'settings' => array(
+      'granularity' => array(
+        'month' => 'month',
+        'day' => 'day',
+        'year' => 'year',
+        'hour' => 0,
+        'minute' => 0,
+        'second' => 0,
+      ),
+      'tz_handling' => 'none',
+      'timezone_db' => '',
+      'cache_enabled' => 0,
+      'cache_count' => '4',
+      'todate' => 'optional',
+    ),
+    'storage' => array(
+      'type' => 'field_sql_storage',
+      'settings' => array(),
+      'module' => 'field_sql_storage',
+      'active' => '1',
+      'details' => array(
+        'sql' => array(
+          'FIELD_LOAD_CURRENT' => array(
+            'field_data_field_date2' => array(
+              'value' => 'field_date2_value',
+              'value2' => 'field_date2_value2',
+            ),
+          ),
+          'FIELD_LOAD_REVISION' => array(
+            'field_revision_field_date2' => array(
+              'value' => 'field_date2_value',
+              'value2' => 'field_date2_value2',
+            ),
+          ),
+        ),
+      ),
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'field_name' => 'field_date',
+    'type' => 'datetime',
+    'module' => 'date',
+    'active' => '1',
+    'locked' => '0',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'columns' => array(
+      'value' => array(
+        'type' => 'datetime',
+        'mysql_type' => 'datetime',
+        'pgsql_type' => 'timestamp without time zone',
+        'sqlite_type' => 'varchar',
+        'sqlsrv_type' => 'smalldatetime',
+        'not null' => FALSE,
+        'sortable' => TRUE,
+        'views' => TRUE,
+      ),
+      'value2' => array(
+        'type' => 'datetime',
+        'mysql_type' => 'datetime',
+        'pgsql_type' => 'timestamp without time zone',
+        'sqlite_type' => 'varchar',
+        'sqlsrv_type' => 'smalldatetime',
+        'not null' => FALSE,
+        'sortable' => TRUE,
+        'views' => FALSE,
+      ),
+    ),
+    'bundles' => array(
+      'node' => array(
+        'plan',
+      ),
+    ),
+  ));
+  
   // Create image field:
   field_create_field(array(
     'field_name' => 'field_image',
@@ -205,6 +284,58 @@ function whereare_install() {
   node_type_save($type);
   node_add_body_field($type);
   
+  // Create date instance:
+  field_create_instance(array(
+    'label' => 'Date',
+    'widget' => array(
+      'weight' => '32',
+      'type' => 'date_select',
+      'module' => 'date',
+      'active' => 1,
+      'settings' => array(
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'year_range' => '-3:+3',
+        'increment' => '15',
+        'label_position' => 'above',
+        'text_parts' => array(),
+      ),
+    ),
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value_code' => '',
+      'default_value2' => 'same',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'type' => 'date_default',
+        'settings' => array(
+          'format_type' => 'long',
+          'multiple_number' => '',
+          'multiple_from' => '',
+          'multiple_to' => '',
+          'fromto' => 'both',
+        ),
+        'module' => 'date',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'field_name' => 'field_date',
+    'entity_type' => 'node',
+    'bundle' => 'note',
+    'deleted' => '0',
+  ));
 
 
   // Many of the following values will be defaulted, they're included here as an illustrative examples.
@@ -286,7 +417,7 @@ function whereare_install() {
       ),
       'teaser' => array(
         'type' => 'hidden',
-        'label' => 'hidden',
+        'label' => 'geofield_openlayers',
         'settings' => array(),
         'weight' => 0,
       ),
@@ -314,6 +445,59 @@ function whereare_install() {
   $type = node_type_set_defaults($type);
   node_type_save($type);
   node_add_body_field($type);
+  
+  // Create date instance:
+  field_create_instance(array(
+    'label' => 'Date',
+    'widget' => array(
+      'weight' => '32',
+      'type' => 'date_select',
+      'module' => 'date',
+      'active' => 1,
+      'settings' => array(
+        'input_format' => 'm/d/Y - H:i:s',
+        'input_format_custom' => '',
+        'year_range' => '-3:+3',
+        'increment' => '15',
+        'label_position' => 'above',
+        'text_parts' => array(),
+      ),
+    ),
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value_code' => '',
+      'default_value2' => 'same',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'type' => 'date_default',
+        'settings' => array(
+          'format_type' => 'long',
+          'multiple_number' => '',
+          'multiple_from' => '',
+          'multiple_to' => '',
+          'fromto' => 'both',
+        ),
+        'module' => 'date',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'type' => 'hidden',
+        'label' => 'above',
+        'settings' => array(),
+        'weight' => 0,
+      ),
+    ),
+    'required' => 0,
+    'description' => '',
+    'field_name' => 'field_date',
+    'entity_type' => 'node',
+    'bundle' => 'plan',
+    'deleted' => '0',
+  ));
   
   field_create_instance(array(
     'label' => 'Location',
@@ -354,7 +538,7 @@ function whereare_install() {
         'weight' => 1,
       ),
       'teaser' => array(
-        'type' => 'hidden',
+        'type' => 'geofield_openlayers',
         'label' => 'hidden',
         'settings' => array(),
         'weight' => 0,
