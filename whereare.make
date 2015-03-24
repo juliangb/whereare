@@ -47,5 +47,6 @@ projects[service_links] = 2.x-dev
 projects[] = "special_menu_items"
 projects[token] = 1.6
 projects[views] = 3.10
+projects[views_responsive_grid] = 1.3
 projects[wysiwyg] = 2.x-dev
 projects[xmlsitemap] = 2.2

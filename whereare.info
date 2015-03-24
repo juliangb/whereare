@@ -34,6 +34,7 @@ dependencies[] = proj4js
 dependencies[] = token
 dependencies[] = update
 dependencies[] = views
+dependencies[] = views_responsive_grid
 dependencies[] = views_ui
 dependencies[] = xmlsitemap
 dependencies[] = xmlsitemap_engines
