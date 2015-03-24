@@ -75,7 +75,7 @@ function whereare_createnode($type, $title, $date) {
   $node->promote = 0; //(1 or 0): promoted to front page
   $node->comment = 1; // 0 = comments disabled, 1 = read only, 2 = read/write
 
-  $entity->field_date[LANGUAGE_NONE][0] = array(
+  $node->field_date[LANGUAGE_NONE][0] = array(
     'value' => date_format($date, 'Y-m-d'),
     'timezone' => 'UTC',
     'timezone_db' => 'UTC',
