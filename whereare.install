@@ -553,8 +553,8 @@ function whereare_install() {
   ));
   
   // Create "Plan" content:
-  whereare_createnode('Plan', 'London, United Kingdom (Depart home)', date_create('2015-04-09'));
-  whereare_createnode('Plan', 'Istanbul, Turkey',                     date_create('2015-04-19'));
+  whereare_createnode('Plan', 'United Kingdom (Depart home)',         date_create('2015-04-09'));
+  whereare_createnode('Plan', 'Turkey',                               date_create('2015-04-19'));
   whereare_createnode('Plan', 'Georgia',                              date_create('2015-04-24'));
   whereare_createnode('Plan', 'Azerbaijan',                           date_create('2015-05-02'));
   whereare_createnode('Plan', 'Uzbekistan',                           date_create('2015-05-20'));
@@ -569,9 +569,8 @@ function whereare_install() {
   whereare_createnode('Plan', 'Pacific Ocean',                        date_create('2016-03-01'));
   whereare_createnode('Plan', 'South America',                        date_create('2016-04-01'));
   whereare_createnode('Plan', 'Central America',                      date_create('2016-06-01'));
-  whereare_createnode('Plan', 'Mexico',                               date_create('2016-08-01'));
-  whereare_createnode('Plan', 'USA',                                  date_create('2016-09-01'));
-  whereare_createnode('Plan', 'London, United Kingdom (Arrive home)', date_create('2016-10-09'));
+  whereare_createnode('Plan', 'North America',                        date_create('2016-09-01'));
+  whereare_createnode('Plan', 'United Kingdom (Arrive home)',         date_create('2016-10-09'));
   
   // Configure Permissions:
   user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', 'access comments'));
