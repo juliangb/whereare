@@ -36,6 +36,21 @@ function whereare_block_info_alter(&$blocks, $theme, $code_blocks) {
 }
 
 /**
+ * Implements hook_openlayers_maps().
+ */
+function whereare_openlayers_maps() {
+  if (function_exists('drupal_get_path')) {
+    $file = DRUPAL_ROOT . '/' . drupal_get_path('profile', 'whereare') . "/includes/openlayers.maps.inc";
+    if (is_file($file)) {
+      require_once $file;
+      return $file;
+    }
+  }
+
+  return _whereare_openlayers_maps();
+}
+
+/**
  * Implements hook_views_api().
  */
 function whereare_views_api() {
