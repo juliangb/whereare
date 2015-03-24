@@ -39,7 +39,11 @@ function whereare_block_info_alter(&$blocks, $theme, $code_blocks) {
  * Implements hook_views_api().
  */
 function whereare_views_api() {
-  return array('api' => 3.0);
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('profile', 'whereare') . '/includes/views',
+    //'template path' => drupal_get_path('module', 'example') . '/themes',
+  );
 }
 
 /**
@@ -57,9 +61,9 @@ function whereare_createnode($type, $title, $date) {
   $node->comment = 1; // 0 = comments disabled, 1 = read only, 2 = read/write
 
   $entity->field_date[LANGUAGE_NONE][0] = array(
-     'value' => date_format($date, 'Y-m-d'),
-     'timezone' => 'UTC',
-     'timezone_db' => 'UTC',
+    'value' => date_format($date, 'Y-m-d'),
+    'timezone' => 'UTC',
+    'timezone_db' => 'UTC',
   );
   
   $node = node_submit($node); // Prepare node for saving
