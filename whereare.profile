@@ -36,15 +36,45 @@ function whereare_block_info_alter(&$blocks, $theme, $code_blocks) {
 }
 
 /**
- * Implements hook_ctools_plugin_api().
+ * Implementation of hook_openlayers_presets().
  */
-function whereare_ctools_plugin_api($module, $api) {
-  if ($module == "openlayers") {
-    switch ($api) {
-      case 'openlayers_maps':
-        return array('version' => 1);
-    }
-  }
+function whereare_openlayers_presets() {
+  // This is an example implementation where we do some stuff
+  // in our map array that the interface does not provide
+
+  $presets = array();
+
+  // Create map array
+  $awesome_map = array(
+    'projection' => '4326',
+    'width' => 'auto',
+    'default_layer' => 'openlayers_default_wms',
+    'height' => '300px',
+    'center' => array(
+      'lat' => '0',
+      'lon' => '0',
+      'zoom' => '2',
+    ),
+    'options' => array(
+      'displayProjection' => '4326',
+    ),
+    'controls' => array(
+      'LayerSwitcher' => TRUE,
+      'Navigation' => TRUE,
+      'PanZoomBar' => TRUE,
+      'MousePosition' => TRUE,
+    ),
+  );
+
+  // Create full preset array
+  $presets['our_awesome_map'] = array(
+    'preset_name' => 'our_awesome_map',
+    'preset_title' => t('Our Awesome Map'),
+    'preset_description' => t('This map will be available in the preset interface and can even be cloned.'),
+    'preset_data' => $awesome_map,
+  );
+
+  return $presets;
 }
 
 /**
