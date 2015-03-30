@@ -172,7 +172,9 @@ function whereare_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'responsive_grid';
-  $handler->display->display_options['style_options']['columns'] = '100';
+  $handler->display->display_options['style_options']['wrapper_classes'] = 'container-fluid';
+  $handler->display->display_options['style_options']['column_classes'] = 'views-column col-md-3';
+  $handler->display->display_options['style_options']['row_classes'] = 'views-row row';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -194,9 +196,9 @@ function whereare_views_default_views() {
     'map_preset' => 'geofield_formatter_map',
     'data' => 'full',
   );
-  /* Sort criterion: Content: Date (field_date) */
+  /* Sort criterion: Content: Date -  start date (field_date) */
   $handler->display->display_options['sorts']['field_date_value']['id'] = 'field_date_value';
-  $handler->display->display_options['sorts']['field_date_value']['table'] = 'field_date_field_date';
+  $handler->display->display_options['sorts']['field_date_value']['table'] = 'field_data_field_date';
   $handler->display->display_options['sorts']['field_date_value']['field'] = 'field_date_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -212,6 +214,12 @@ function whereare_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'plan' => 'plan',
   );
+  /* Filter criterion: Content: Date -  start date (field_date) */
+  $handler->display->display_options['filters']['field_date_value']['id'] = 'field_date_value';
+  $handler->display->display_options['filters']['field_date_value']['table'] = 'field_data_field_date';
+  $handler->display->display_options['filters']['field_date_value']['field'] = 'field_date_value';
+  $handler->display->display_options['filters']['field_date_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_date_value']['default_date'] = 'today';
   
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -253,8 +261,8 @@ function whereare_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Next place to visit';
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
 
   $views[$view->name] = $view;
 
