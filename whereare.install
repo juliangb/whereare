@@ -555,7 +555,7 @@ function whereare_install() {
   // Create "Plan" content:
   whereare_createnode('Plan', 'United Kingdom',  date_create('2015-04-09'));
   whereare_createnode('Plan', 'Turkey',          date_create('2015-04-19'));
-  whereare_createnode('Plan', 'Georgia',         date_create('2015-04-24'));
+  whereare_createnode('Plan', 'Georgia, Asia',   date_create('2015-04-24'));
   whereare_createnode('Plan', 'Azerbaijan',      date_create('2015-05-02'));
   whereare_createnode('Plan', 'Uzbekistan',      date_create('2015-05-20'));
   whereare_createnode('Plan', 'Taijikistan',     date_create('2015-05-27'));
