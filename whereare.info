@@ -11,6 +11,7 @@ dependencies[] = block
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_api
+dependencies[] = date_views
 dependencies[] = dblog
 dependencies[] = field_ui
 dependencies[] = file
