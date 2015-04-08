@@ -5,8 +5,6 @@ exclusive = true
 
 ; Drupal (Core)
 dependencies[] = admin_menu
-dependencies[] = adsense
-dependencies[] = adsense_managed
 dependencies[] = block
 dependencies[] = ctools
 dependencies[] = date

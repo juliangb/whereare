@@ -14,8 +14,6 @@ projects[juliangb][download][url] = "git@github.com:juliangb/juliangb.git"
 
 ; Contrib Modules
 projects[admin_menu] = 3.0-rc5
-projects[auto_nodetitle] = 1.0
-projects[adsense] = 1.3
 projects[ctools] = 1.7
 projects[date] = 2.8
 projects[devel] = 1.5
