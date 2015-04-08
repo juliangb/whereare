@@ -261,17 +261,17 @@ function whereare_install() {
 
 
   
-  // Create "Note" content type:
+  // Create "Blog" content type:
   $type = array(
-    'type' => 'note',
-    'name' => st('Note'),
+    'type' => 'blog',
+    'name' => st('Blog Post'),
     'base' => 'node_content',
   );
 
   // Don't display author information on teasers:
   variable_set('node_submitted_note', FALSE);
   // Set path pattern:
-  variable_set('pathauto_node_note_pattern', 'note/[node:title]');
+  variable_set('pathauto_node_note_pattern', 'blog/[node:title]');
   
   $type = node_type_set_defaults($type);
   node_type_save($type);
@@ -326,48 +326,8 @@ function whereare_install() {
     'description' => '',
     'field_name' => 'field_date',
     'entity_type' => 'node',
-    'bundle' => 'note',
+    'bundle' => 'blog',
     'deleted' => '0',
-  ));
-
-
-  // Many of the following values will be defaulted, they're included here as an illustrative examples.
-  // See http://api.drupal.org/api/function/field_create_instance/7
-  field_create_instance(array(
-    'field_name' => 'field_image',
-    'entity_type' => 'node',
-    'label' => 'Image',
-    'bundle' => 'note',
-    'required' => FALSE,
-    'settings' => array(
-      'file_directory' => 'field/image',
-      'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
-      'alt_field' => TRUE,
-      'title_field' => '',
-    ),
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'type' => 'image',
-        'settings' => array(
-          'image_style' => 'large',
-          'image_link' => '',
-        ),
-        'weight' => -1,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'type' => 'image',
-        'settings' => array(
-          'image_style' => 'medium',
-          'image_link' => 'content',
-        ),
-        'weight' => -1,
-      ),
-    ),
   ));
   
   field_create_instance(array(
@@ -419,7 +379,7 @@ function whereare_install() {
     'description' => '',
     'field_name' => 'field_location',
     'entity_type' => 'node',
-    'bundle' => 'note',
+    'bundle' => 'blog',
     'deleted' => '0',
   ));
   
